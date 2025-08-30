@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Imageboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "utils": "./utils.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>/b/ - Random</h1> <!-- Placeholder board name -->
+
+        <nav class="board-nav">
+            <a href="#" id="threads-nav" class="active">Threads</a>
+            <a href="#" id="catalog-nav">Catalog</a>
+        </nav>
+
+        <div id="threads-view" class="view-section">
+            <section class="new-post-section">
+                <h2>New Thread</h2>
+                <form id="post-form">
+                    <input type="file" id="image-upload" accept="image/*">
+                    <textarea id="post-text" placeholder="Your message..." rows="4" required></textarea>
+                    <button type="submit">Start Thread</button>
+                </form>
+            </section>
+
+            <hr>
+
+            <section class="threads-section">
+                <h2>Threads</h2>
+                <div id="threads-container">
+                    <!-- Threads will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <div id="catalog-view" class="view-section hidden">
+            <section class="catalog-section">
+                <h2>Catalog</h2>
+                <div id="catalog-container">
+                    <!-- Catalog items will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Hidden template for a single thread (initial post + replies) -->
+    <template id="thread-template">
+        <div class="thread">
+            <div class="thread-header">
+                <span class="thread-id">No.<span class="id-value"></span></span>
+                <span class="thread-timestamp"></span>
+                <span class="thread-views">Views: <span class="views-count">0</span></span>
+            </div>
+            <div class="thread-content">
+                <img class="thread-image" src="" alt="Thread image">
+                <p class="thread-text"></p>
+            </div>
+            
+            <div class="replies-section">
+                <h3>Replies</h3>
+                <div class="replies-container">
+                    <!-- Replies will be loaded here by JavaScript -->
+                </div>
+                <form class="reply-form">
+                    <input type="file" class="reply-image-upload" accept="image/*">
+                    <textarea class="reply-text" placeholder="Your reply..." rows="2" required></textarea>
+                    <button type="submit">Reply</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- Hidden template for a single reply -->
+    <template id="reply-template">
+        <div class="reply">
+            <div class="reply-header">
+                <span class="reply-id">No.<span class="id-value"></span></span>
+                <span class="reply-timestamp"></span>
+            </div>
+            <div class="reply-content">
+                <img class="reply-image" src="" alt="Reply image">
+                <p class="reply-text"></p>
+            </div>
+        </div>
+    </template>
+
+    <!-- Hidden template for a single catalog item -->
+    <template id="catalog-item-template">
+        <div class="catalog-item">
+            <img class="catalog-image" src="" alt="Catalog image">
+            <div class="catalog-item-info">
+                <span class="catalog-id">No.<span class="id-value"></span></span>
+                <p class="catalog-text-snippet"></p>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
